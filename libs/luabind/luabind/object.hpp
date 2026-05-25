@@ -30,6 +30,8 @@
 #include <boost/tuple/tuple.hpp>
 #include <boost/optional.hpp>
 
+#include <ostream>
+
 #include <luabind/nil.hpp>
 #include <luabind/value_wrapper.hpp>
 #include <luabind/detail/pcall.hpp>
@@ -226,7 +228,7 @@ LUABIND_BINARY_OP_DEF(<, lua_lessthan)
         , static_cast<ValueWrapper const&>(v));
 		char const* p = lua_tostring(interpreter, -1);
         std::size_t len = lua_strlen(interpreter, -1);
-		std::copy(p, p + len, std::ostream_iterator<char>(os));
+		os.write(p, static_cast<std::streamsize>(len));
 		return os;
 	}
 

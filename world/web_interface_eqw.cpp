@@ -84,7 +84,7 @@ void EQW__GetLauncherCount(WebInterface *i, const std::string& method, const std
 }
 
 void EQW__GetLoginServerCount(WebInterface *i, const std::string& method, const std::string& id, const Json::Value& params) {
-	Json::Value ret = LoginServerList::Instance()->GetServerCount();
+	Json::Value ret = static_cast<Json::UInt64>(LoginServerList::Instance()->GetServerCount());
 	i->SendResponse(id, ret);
 }
 

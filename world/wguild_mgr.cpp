@@ -345,7 +345,7 @@ bool WorldGuildManager::LoadTributes()
 		tribute_list[t.id] = td;
 	}
 
-	LogInfo("Loaded [{}] tributes", Strings::Commify(tributes.size()));
+	LogInfo("Loaded [{}] tributes", Strings::Commify(static_cast<uint64>(tributes.size())));
 
 	auto tribute_levels = TributeLevelsRepository::GetWhere(*m_content_db, "TRUE ORDER BY tribute_id, level");
 
@@ -372,7 +372,7 @@ bool WorldGuildManager::LoadTributes()
 		cur.tier_count++;
 	}
 
-	LogInfo("Loaded [{}] tribute levels", Strings::Commify(tribute_levels.size()));
+	LogInfo("Loaded [{}] tribute levels", Strings::Commify(static_cast<uint64>(tribute_levels.size())));
 
 	return true;
 }

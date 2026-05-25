@@ -601,14 +601,16 @@ template StmtResult PreparedStmt::Execute(const std::vector<std::string_view>&);
 template StmtResult PreparedStmt::Execute(const std::vector<std::string>&);
 template StmtResult PreparedStmt::Execute(const std::vector<const char*>&);
 
-#define INSTANTIATE(T) \
+#define INSTANTIATE_BIND_GET(T) \
 	template void PreparedStmt::BindInput(size_t, T); \
-	template StmtResult PreparedStmt::Execute(const std::vector<T>&); \
 	template std::optional<T> StmtRow::Get(size_t) const; \
 	template std::optional<T> StmtRow::Get(std::string_view) const; \
 	template std::optional<T> StmtColumn::Get() const;
 
-INSTANTIATE(bool);
+#define INSTANTIATE(T) \
+	INSTANTIATE_BIND_GET(T) \
+	template StmtResult PreparedStmt::Execute(const std::vector<T>&);
+
 INSTANTIATE(int8_t);
 INSTANTIATE(uint8_t);
 INSTANTIATE(int16_t);
@@ -619,5 +621,18 @@ INSTANTIATE(int64_t);
 INSTANTIATE(uint64_t);
 INSTANTIATE(float);
 INSTANTIATE(double);
+
+// vector<bool> elements are proxy references on libc++, not plain bool
+INSTANTIATE_BIND_GET(bool);
+template <>
+StmtResult PreparedStmt::Execute(const std::vector<bool>& args)
+{
+	CheckArgs(args.size());
+	for (size_t i = 0; i < args.size(); ++i)
+	{
+		BindInput(i, static_cast<bool>(args[i]));
+	}
+	return DoExecute();
+}
 
 } // namespace mysql

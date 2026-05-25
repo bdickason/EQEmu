@@ -132,6 +132,7 @@ void* AllocatePageAligned(size_t size)
 
 void MarkMemoryForKSM(void* start, size_t size)
 {
+#ifdef MADV_MERGEABLE
 	if (madvise(start, size, MADV_MERGEABLE) == 0)
 	{
 		LogKSM("Marked memory for KSM | start [{}] size [{}] bytes", start, size);
@@ -140,6 +141,7 @@ void MarkMemoryForKSM(void* start, size_t size)
 	{
 		perror("madvise failed");
 	}
+#endif
 }
 
 void AlignHeapToPageBoundary()

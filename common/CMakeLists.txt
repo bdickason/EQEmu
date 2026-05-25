@@ -795,8 +795,13 @@ if(${OPENSSL_VERSION} VERSION_GREATER_EQUAL "1.1.1")
     target_compile_definitions(common PUBLIC CPPHTTPLIB_OPENSSL_SUPPORT)
 endif()
 
-if(UNIX)
+if(APPLE)
+    target_link_libraries(common PUBLIC "-framework CoreFoundation")
+elseif(UNIX)
     target_link_libraries(common PUBLIC uuid)
+endif()
+
+if(UNIX)
     set_source_files_properties("patches/sod.cpp" "patches/sof.cpp" "patches/rof.cpp" "patches/rof2.cpp" "patches/uf.cpp" PROPERTIES COMPILE_FLAGS -O0)
 endif()
 
