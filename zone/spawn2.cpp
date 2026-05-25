@@ -501,7 +501,7 @@ bool ZoneDatabase::PopulateZoneSpawnList(uint32 zoneid, LinkedList<Spawn2*> &spa
 		}
 	}
 
-	LogInfo("Loaded [{}] respawn timer(s)", Strings::Commify(l.size()));
+	LogInfo("Loaded [{}] respawn timer(s)", Strings::Commify(static_cast<uint64>(l.size())));
 
 	const char *zone_name = ZoneName(zoneid);
 
@@ -580,7 +580,7 @@ bool ZoneDatabase::PopulateZoneSpawnList(uint32 zoneid, LinkedList<Spawn2*> &spa
 		new_spawn->Process();
 	}
 
-	LogInfo("Loaded [{}] spawn2 entries", Strings::Commify(l.size()));
+	LogInfo("Loaded [{}] spawn2 entries", Strings::Commify(static_cast<uint64>(l.size())));
 
 	return true;
 }

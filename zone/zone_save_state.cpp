@@ -832,7 +832,7 @@ void Zone::SaveZoneState()
 
 	ZoneStateSpawnsRepository::InsertMany(database, spawns);
 
-	LogInfo("Saved [{}] zone state spawns", Strings::Commify(spawns.size()));
+	LogInfo("Saved [{}] zone state spawns", Strings::Commify(static_cast<uint64>(spawns.size())));
 }
 
 void Zone::ClearZoneState(uint32 zone_id, uint32 instance_id)

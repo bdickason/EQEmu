@@ -497,7 +497,7 @@ bool ZoneDatabase::LoadTraps(const std::string& zone_short_name, int16 instance_
 
 	LogInfo(
 		"Loaded [{}] Trap{}",
-		Strings::Commify(l.size()),
+		Strings::Commify(static_cast<uint64>(l.size())),
 		l.size() != 1 ? "s" : ""
 	);
 

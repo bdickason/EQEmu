@@ -144,7 +144,7 @@ void RunBenchmarkCycle(uint64_t target_rows)
 	}
 	auto                          insert_end  = std::chrono::high_resolution_clock::now();
 	std::chrono::duration<double> insert_time = insert_end - insert_start;
-	std::cout << "✅ Completed " << Strings::Commify(OPERATIONS_PER_TEST) << " inserts in " << insert_time.count()
+	std::cout << "✅ Completed " << Strings::Commify(static_cast<uint64>(OPERATIONS_PER_TEST)) << " inserts in " << insert_time.count()
 			  << " seconds. (Individual Insert Performance)\n";
 
 	// ✏️ **Measure Update Performance Using DataBucket**
@@ -172,7 +172,7 @@ void RunBenchmarkCycle(uint64_t target_rows)
 	}
 	auto                          update_end  = std::chrono::high_resolution_clock::now();
 	std::chrono::duration<double> update_time = update_end - update_start;
-	std::cout << "✅ Completed " << Strings::Commify(OPERATIONS_PER_TEST) << " updates in " << update_time.count()
+	std::cout << "✅ Completed " << Strings::Commify(static_cast<uint64>(OPERATIONS_PER_TEST)) << " updates in " << update_time.count()
 			  << " seconds. (Scoped Update Performance)\n";
 
 
@@ -214,7 +214,7 @@ void RunBenchmarkCycle(uint64_t target_rows)
 	}
 	auto                          read_cached_end  = std::chrono::high_resolution_clock::now();
 	std::chrono::duration<double> read_cached_time = read_cached_end - read_cached_start;
-	std::cout << "✅ Completed " << Strings::Commify(OPERATIONS_PER_TEST) << " cached reads in "
+	std::cout << "✅ Completed " << Strings::Commify(static_cast<uint64>(OPERATIONS_PER_TEST)) << " cached reads in "
 			  << read_cached_time.count() << " seconds. (DataBucket::GetData)\n";
 
 	// 🔍 **Measure Client-Scoped Cache Miss Performance (Skips DB via CanCache)**
@@ -232,7 +232,7 @@ void RunBenchmarkCycle(uint64_t target_rows)
 	}
 	auto read_client_cache_miss_end = std::chrono::high_resolution_clock::now();
 	std::chrono::duration<double> read_client_cache_miss_time = read_client_cache_miss_end - read_client_cache_miss_start;
-	std::cout << "✅ Completed " << Strings::Commify(OPERATIONS_PER_TEST)
+	std::cout << "✅ Completed " << Strings::Commify(static_cast<uint64>(OPERATIONS_PER_TEST))
 			  << " scoped cache-miss reads (no DB) in "
 			  << read_client_cache_miss_time.count() << " seconds. (Client Scoped, Cache Miss, No DB)\n";
 
@@ -244,7 +244,7 @@ void RunBenchmarkCycle(uint64_t target_rows)
 	}
 	auto                          read_uncached_end   = std::chrono::high_resolution_clock::now();
 	std::chrono::duration<double> read_uncached_time  = read_uncached_end - read_uncached_start;
-	std::cout << "✅ Completed " << Strings::Commify(OPERATIONS_PER_TEST) << " non-cached reads in "
+	std::cout << "✅ Completed " << Strings::Commify(static_cast<uint64>(OPERATIONS_PER_TEST)) << " non-cached reads in "
 			  << read_uncached_time.count() << " seconds. (DataBucketsRepository::GetWhere)\n";
 
 	// 🗑️ **Measure Delete Performance**
@@ -286,7 +286,7 @@ void RunBenchmarkCycle(uint64_t target_rows)
 	}
 	auto                          delete_end  = std::chrono::high_resolution_clock::now();
 	std::chrono::duration<double> delete_time = delete_end - delete_start;
-	std::cout << "✅ Completed " << Strings::Commify(OPERATIONS_PER_TEST) << " deletes in " << delete_time.count()
+	std::cout << "✅ Completed " << Strings::Commify(static_cast<uint64>(OPERATIONS_PER_TEST)) << " deletes in " << delete_time.count()
 			  << " seconds.\n";
 }
 

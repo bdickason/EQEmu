@@ -779,7 +779,7 @@ std::vector<DoorsRepository::Doors> ZoneDatabase::LoadDoors(const std::string &z
 			"zone = '{}' AND (version = {} OR version = -1) {} ORDER BY doorid ASC",
 			zone_name, version, ContentFilterCriteria::apply()));
 
-	LogDoors("Loaded [{}] doors for [{}] version [{}]", Strings::Commify(door_entries.size()), zone_name, version);
+	LogDoors("Loaded [{}] doors for [{}] version [{}]", Strings::Commify(static_cast<uint64>(door_entries.size())), zone_name, version);
 
 	return door_entries;
 }

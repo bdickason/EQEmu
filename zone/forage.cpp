@@ -68,7 +68,7 @@ uint32 ZoneDatabase::LoadForage(uint32 zone_id, uint8 skill_level)
 
 	LogInfo(
 		"Loaded [{}] Forage Item{}",
-		Strings::Commify(l.size()),
+		Strings::Commify(static_cast<uint64>(l.size())),
 		l.size() != 1 ? "s" : ""
 	);
 
@@ -132,7 +132,7 @@ uint32 ZoneDatabase::LoadFishing(uint32 zone_id, uint8 skill_level, uint32 &npc_
 
 	LogInfo(
 		"Loaded [{}] Fishing Item{}",
-		Strings::Commify(l.size()),
+		Strings::Commify(static_cast<uint64>(l.size())),
 		l.size() != 1 ? "s" : ""
 	);
 

@@ -33,12 +33,12 @@ void ShowNetwork(Client *c, const Seperator *sep)
 
 	popup_table += DialogueWindow::TableRow(
 		DialogueWindow::TableCell("Max Packet Size") +
-		DialogueWindow::TableCell(Strings::Commify(opts.reliable_stream_options.max_packet_size))
+		DialogueWindow::TableCell(Strings::Commify(static_cast<uint64>(opts.reliable_stream_options.max_packet_size)))
 	);
 
 	popup_table += DialogueWindow::TableRow(
 		DialogueWindow::TableCell("Max Connection Count") +
-		DialogueWindow::TableCell(Strings::Commify(opts.reliable_stream_options.max_connection_count))
+		DialogueWindow::TableCell(Strings::Commify(static_cast<uint64>(opts.reliable_stream_options.max_connection_count)))
 	);
 
 	popup_table += DialogueWindow::TableRow(
@@ -88,12 +88,12 @@ void ShowNetwork(Client *c, const Seperator *sep)
 
 	popup_table += DialogueWindow::TableRow(
 		DialogueWindow::TableCell("CRC Length") +
-		DialogueWindow::TableCell(Strings::Commify(opts.reliable_stream_options.crc_length))
+		DialogueWindow::TableCell(Strings::Commify(static_cast<uint64>(opts.reliable_stream_options.crc_length)))
 	);
 
 	popup_table += DialogueWindow::TableRow(
 		DialogueWindow::TableCell("Hold Size") +
-		DialogueWindow::TableCell(Strings::Commify(opts.reliable_stream_options.hold_size))
+		DialogueWindow::TableCell(Strings::Commify(static_cast<uint64>(opts.reliable_stream_options.hold_size)))
 	);
 
 	popup_table += DialogueWindow::TableRow(

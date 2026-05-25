@@ -349,7 +349,7 @@ bool NpcScaleManager::LoadScaleData()
 		}
 	}
 
-	LogInfo("Loaded [{}] global scaling data entries", Strings::Commify(rows.size()));
+	LogInfo("Loaded [{}] global scaling data entries", Strings::Commify(static_cast<uint64>(rows.size())));
 
 	return true;
 }

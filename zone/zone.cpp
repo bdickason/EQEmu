@@ -294,7 +294,7 @@ bool Zone::LoadZoneObjects()
 		safe_delete(inst);
 	}
 
-	LogInfo("Loaded [{}] world objects", Strings::Commify(l.size()));
+	LogInfo("Loaded [{}] world objects", Strings::Commify(static_cast<uint64>(l.size())));
 
 	return true;
 }
@@ -679,7 +679,7 @@ void Zone::LoadMerchants()
 		)
 	);
 
-	LogInfo("Loaded [{}] merchant lists", Strings::Commify(l.size()));
+	LogInfo("Loaded [{}] merchant lists", Strings::Commify(static_cast<uint64>(l.size())));
 
 	if (l.empty()) {
 		LogDebug("No Merchant Data found for [{}]", GetShortName());
@@ -2485,7 +2485,7 @@ void Zone::LoadAlternateCurrencies()
 
 	LogInfo(
 		"Loaded [{}] Alternate Currenc{}",
-		Strings::Commify(l.size()),
+		Strings::Commify(static_cast<uint64>(l.size())),
 		l.size() != 1 ? "ies" : "y"
 	);
 }
@@ -2623,7 +2623,7 @@ void Zone::LoadNPCEmotes(std::vector<NPC_Emote_Struct*>* v)
 
 	LogInfo(
 		"Loaded [{}] NPC Emote{}",
-		Strings::Commify(l.size()),
+		Strings::Commify(static_cast<uint64>(l.size())),
 		l.size() != 1 ? "s" : ""
 	);
 
@@ -2728,8 +2728,8 @@ void Zone::LoadGrids()
 
 	LogInfo(
 		"Loaded [{}] grids and [{}] grid_entries",
-		Strings::Commify(zone_grids.size()),
-		Strings::Commify(zone_grid_entries.size())
+		Strings::Commify(static_cast<uint64>(zone_grids.size())),
+		Strings::Commify(static_cast<uint64>(zone_grid_entries.size()))
 	);
 }
 

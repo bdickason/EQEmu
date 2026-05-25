@@ -619,6 +619,10 @@ INSTANTIATE(int32_t);
 INSTANTIATE(uint32_t);
 INSTANTIATE(int64_t);
 INSTANTIATE(uint64_t);
+#ifdef __APPLE__
+template std::optional<long> StmtColumn::Get() const;
+template std::optional<unsigned long> StmtColumn::Get() const;
+#endif
 INSTANTIATE(float);
 INSTANTIATE(double);
 

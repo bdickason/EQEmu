@@ -44,7 +44,7 @@ bool TitleManager::LoadTitles()
 		titles.push_back(e);
 	}
 
-	LogInfo("Loaded [{}] Title{}", Strings::Commify(l.size()), l.size() != 1 ? "s" : "");
+	LogInfo("Loaded [{}] Title{}", Strings::Commify(static_cast<uint64>(l.size())), l.size() != 1 ? "s" : "");
 
 	return true;
 }

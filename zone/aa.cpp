@@ -1807,7 +1807,7 @@ bool ZoneDatabase::LoadAlternateAdvancementAbilities(
 
 	LogInfo(
 		"Loaded [{}] Alternate Advancement Abilit{}.",
-		Strings::Commify(abilities.size()),
+		Strings::Commify(static_cast<uint64>(abilities.size())),
 		abilities.size() != 1 ? "ies" : "y"
 	);
 
@@ -1846,7 +1846,7 @@ bool ZoneDatabase::LoadAlternateAdvancementAbilities(
 
 	LogInfo(
 		"Loaded [{}] Alternate Advancement Ability Rank{}.",
-		Strings::Commify(ranks.size()),
+		Strings::Commify(static_cast<uint64>(ranks.size())),
 		ranks.size() != 1 ? "s" : ""
 	);
 
@@ -1877,7 +1877,7 @@ bool ZoneDatabase::LoadAlternateAdvancementAbilities(
 
 	LogInfo(
 		"Loaded [{}] Alternate Advancement Ability Rank Effect{}.",
-		Strings::Commify(aa_rank_effects.size()),
+		Strings::Commify(static_cast<uint64>(aa_rank_effects.size())),
 		aa_rank_effects.size() != 1 ? "s" : ""
 	);
 
@@ -1901,7 +1901,7 @@ bool ZoneDatabase::LoadAlternateAdvancementAbilities(
 
 	LogInfo(
 		"Loaded [{}] Alternate Advancement Ability Rank Prerequisite{}.",
-		Strings::Commify(aa_rank_prereqs.size()),
+		Strings::Commify(static_cast<uint64>(aa_rank_prereqs.size())),
 		aa_rank_prereqs.size() != 1 ? "s" : ""
 	);
 

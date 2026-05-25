@@ -628,7 +628,7 @@ void ZoneDatabase::LoadGlobalLoot()
 
 	LogInfo(
 		"Loaded [{}] Global Loot Entr{}.",
-		Strings::Commify(l.size()),
+		Strings::Commify(static_cast<uint64>(l.size())),
 		l.size() != 1 ? "ies" : "y"
 	);
 

@@ -170,7 +170,7 @@ void DynamicZone::CacheAllFromDatabase()
 		RequestMemberStatuses();
 	}
 
-	LogInfo("Loaded [{}] dynamic zone(s)", Strings::Commify(zone->dynamic_zone_cache.size()));
+	LogInfo("Loaded [{}] dynamic zone(s)", Strings::Commify(static_cast<uint64>(zone->dynamic_zone_cache.size())));
 	LogDynamicZones("Caching [{}] dynamic zone(s) took [{}s]", zone->dynamic_zone_cache.size(), bench.elapsed());
 }
 
